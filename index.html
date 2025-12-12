@@ -151,7 +151,7 @@
       .container {
         max-width: 100%;
         margin: 0 auto;
-        padding: 0 clamp(1.5rem, 6vw, 160px);
+        padding: 0 clamp(1.5rem, 6vw, 160px); /* Reduced from 200px */
       }
 
       .page-wrapper {
@@ -266,7 +266,7 @@
 
       .cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Reduced from 385px */
         gap: 2rem;
         margin-top: 2rem;
       }
@@ -426,23 +426,23 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 0.75rem 0.5rem;
+        padding: 0.75rem 0.5rem; /* Reduced from 1rem */
         border-radius: var(--radius-lg);
         text-decoration: none;
-        font-size: 0.8rem;
+        font-size: 0.8rem; /* Reduced from 0.85rem */
         font-weight: 600;
         text-align: center;
         transition: all var(--transition-base);
         border: 1px solid transparent;
         position: relative;
         overflow: hidden;
-        min-height: 88px;
+        min-height: 88px; /* Reduced from 96px */
         word-break: break-word;
         line-height: 1.2;
       }
 
       .tour-btn i {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* Reduced from 1.25rem */
         margin-bottom: 0.5rem;
       }
 
@@ -814,218 +814,95 @@
     </div>
 
     <script>
-      // School data from your JSON
-      const schoolsData = [
-        {
-          "name": "ST. JOHN'S ENGLISH SCHOOL",
-          "location": "Besant Nagar, Chennai, Tamil Nadu",
-          "description": "Senior Secondary School with strong academic environment and co-curricular focus.",
-          "image": "https://media.istockphoto.com/id/94733145/photo/modern-brick-high-school.jpg?s=612x612&w=0&k=20&c=uvy_8EVFCZt74Ru8dxOnCOLW1Ts24qLnvesQNd7jN7E=",
-          "tours": {
-            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
-            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
-          },
-          "disclosure": "https://sjbn.edu.in/mandatory-disclosure/",
-          "contact": "https://sjbn.edu.in/contact/"
-        },
-        {
-          "name": "NATIONAL PUBLIC SCHOOL",
-          "location": "Gopalapuram, Chennai, Tamil Nadu",
-          "description": "Reputed Senior Secondary institution offering holistic academic development.",
-          "image": "https://images.unsplash.com/photo-1562774053-701939374585?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
-            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
-          },
-          "disclosure": "https://www.npschennai.com/MANDATORY_PUBLIC_DISCLOSURE.pdf",
-          "contact": "https://www.npschennai.com/contact-us.html"
-        },
-        {
-          "name": "JAWAHAR VIDYALAYA SR SEC SCHOOL",
-          "location": "Ashok Nagar, Chennai, Tamil Nadu",
-          "description": "CBSE Senior Secondary school known for discipline and academic excellence.",
-          "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.iviewd.com/woodstock/",
-            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
-          },
-          "disclosure": "https://jawaharvidyalaya.com/mandatory/",
-          "contact": "https://jawaharvidyalaya.com/contact-us/"
-        },
-        {
-          "name": "THE HINDU SENIOR SEC SCHOOL",
-          "location": "Triplicane, Chennai, Tamil Nadu",
-          "description": "Historic Senior Secondary school with strong academic and cultural legacy.",
-          "image": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
-            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
-          },
-          "disclosure": "https://hinduseniortriplicane.com/mandatory-disclosure-2022/",
-          "contact": "https://hinduseniortriplicane.com/contact-us/"
-        },
-        {
-          "name": "SRI SANKARA SR SEC SCHOOL",
-          "location": "Adyar, Chennai, Tamil Nadu",
-          "description": "Popular CBSE school offering quality education rooted in tradition.",
-          "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
-            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
-          },
-          "disclosure": "https://sssa.srisankaraschools.org/mandatory-disclosure/",
-          "contact": "https://sssa.srisankaraschools.org/contact-us/"
-        },
-        {
-          "name": "GURU SHREE SANTHIVIJAY JAIN VIDYALAY",
-          "location": "Vepery, Chennai, Tamil Nadu",
-          "description": "CBSE Senior Secondary school focused on value-based education for Jain community and beyond.",
-          "image": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.iviewd.com/woodstock/",
-            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
-          },
-          "disclosure": "https://gssjainvidyalaya.com/contact-us/",
-          "contact": "https://gssjainvidyalaya.com/contact-us/"
-        },
-        {
-          "name": "ST. JOHN'S SENIOR SEC SCHOOL",
-          "location": "Mandaveli, Chennai, Tamil Nadu",
-          "description": "Renowned Senior Secondary school with balanced academic and extracurricular programs.",
-          "image": "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
-            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
-          },
-          "disclosure": "https://stjohnscbse.com/public-disclosure-documents/",
-          "contact": "https://stjohnscbse.com/contact-us/"
-        },
-        {
-          "name": "LA CHATELAINE JUNIOR COLLEGE",
-          "location": "Valasaravakkam, Chennai, Tamil Nadu",
-          "description": "Prestigious junior college offering CBSE curriculum with modern learning infrastructure.",
-          "image": "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.iviewd.com/woodstock/",
-            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
-          },
-          "disclosure": "https://www.lachatelaine.info/Docs/Appendix%20IX.pdf",
-          "contact": "https://www.lachatelaine.info/OurSchool.html"
-        },
-        {
-          "name": "SHRINE VAILANKANNI SR SEC SCHOOL",
-          "location": "T Nagar, Chennai, Tamil Nadu",
-          "description": "A well-known Senior Secondary school with strong academic track record.",
-          "image": "https://lh3.googleusercontent.com/p/AF1QipONdF87F9-snEqc3cwQyOqXBYw0OjWfUel2jqGb=s680-w680-h510",
-          "tours": {
-            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
-            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
-          },
-          "disclosure": "https://vailankanni.org/about/disclosures/",
-          "contact": "https://vailankanni.org/about/our-legacy/"
-        },
-        {
-          "name": "BALA VIDYA MANDIR SR SEC SCHOOL",
-          "location": "Adyar, Chennai, Tamil Nadu",
-          "description": "Esteemed CBSE school with excellent academic reputation and cultural activities.",
-          "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
-            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
-          },
-          "disclosure": "https://www.balavidyamandir.com/public_disclosure",
-          "contact": "https://www.balavidyamandir.com/our_school"
-        },
-        {
-          "name": "SHERWOOD HALL SR SEC SCHOOL",
-          "location": "Chetpet, Chennai, Tamil Nadu",
-          "description": "Top-rated Senior Secondary school with modern facilities and holistic learning.",
-          "image": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.iviewd.com/woodstock/",
-            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
-          },
-          "disclosure": "https://sherwoodhallschool.com/mandatory-public-disclosure/",
-          "contact": "https://sherwoodhallschool.com/contact-us/"
-        },
-        {
-          "name": "P S B B SENIOR SECONDARY SCHOOL (Nungambakkam)",
-          "location": "Nungambakkam, Chennai, Tamil Nadu",
-          "description": "Iconic CBSE school known for excellence in academics and extracurriculars.",
-          "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
-            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
-          },
-          "disclosure": "https://www.psbbschools.ac.in/mandatory-disclosure",
-          "contact": "https://www.psbbschools.ac.in/contact"
-        },
-        {
-          "name": "VIDYA MANDIR SR SEC SCHOOL",
-          "location": "Mylapore, Chennai, Tamil Nadu",
-          "description": "Highly reputed Senior Secondary school with strong academic legacy.",
-          "image": "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
-            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
-          },
-          "disclosure": "https://www.vidya-mandir.edu.in/wp-content/uploads/2024/07/MANDATORY-PUBLIC-DISCLOSURE-2024.pdf",
-          "contact": "https://www.vidya-mandir.edu.in/contact-us/"
-        },
-        {
-          "name": "CHINMAYA VIDYALAYA",
-          "location": "Kilpauk, Chennai, Tamil Nadu",
-          "description": "CBSE Senior Secondary school inspired by Chinmaya Mission values.",
-          "image": "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.iviewd.com/woodstock/",
-            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
-          },
-          "disclosure": "https://cvschooltrichy.org/school-details.php",
-          "contact": "https://cvschooltrichy.org/contact.php"
-        },
-        {
-          "name": "KOLAPERUMAL CHETTY VAISHNAV S S SCHOOL",
-          "location": "Arumbakkam, Chennai, Tamil Nadu",
-          "description": "CBSE school offering academic excellence with Vaishnav cultural values.",
-          "image": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&auto=format&fit=crop",
-          "tours": {
-            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
-            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
-          },
-          "disclosure": "https://kpcvs.co.in/StatutoryCompliances.html",
-          "contact": "https://kpcvs.co.in/Contactus.html"
-        }
-      ];
-
+      // Enhanced production JavaScript
       document.addEventListener("DOMContentLoaded", () => {
         // Elements
         const cardsGrid = document.getElementById("cardsGrid");
         const searchInput = document.getElementById("searchInput");
 
         // State
+        let schoolsData = [];
         let filteredData = [];
         let searchTimeout = null;
         let firstRender = true;
 
         // Constants
-        const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1596495578065-8a3e57c69cbd?auto=format&fit=crop&w=800&q=80";
+        const FALLBACK_IMAGE =
+          "https://images.unsplash.com/photo-1596495578065-8a3e57c69cbd?auto=format&fit=crop&w=800&q=80";
         const DEBOUNCE_DELAY = 300;
+        const ERROR_TIMEOUT = 5000;
 
-        // Initialize
-        initializeData();
-        renderCards();
+        // Utility functions
+        const escapeHTML = (str) => {
+          if (!str) return "";
+          const div = document.createElement("div");
+          div.textContent = str;
+          return div.innerHTML;
+        };
 
-        function initializeData() {
-          // Add search index to each school
-          schoolsData.forEach((school, index) => {
-            school.id = index + 1;
-            school._search = `${school.name || ""} ${
-              school.location || ""
-            } ${school.description || ""}`.toLowerCase();
-          });
-          
-          filteredData = [...schoolsData];
+        const safeURL = (url) => {
+          if (!url || !url.startsWith("http")) return "";
+          return url;
+        };
+
+        // Format description to avoid overflow
+        const truncateDescription = (text, maxLength = 120) => {
+          if (!text) return "No description available.";
+          if (text.length <= maxLength) return text;
+          return text.substring(0, maxLength).trim() + "...";
+        };
+
+        // Load data from data.json
+        loadData();
+
+        async function loadData() {
+          try {
+            cardsGrid.innerHTML = createLoadingState();
+            
+            const response = await fetch("data.json");
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const data = await response.json();
+            if (!Array.isArray(data)) {
+              throw new Error("Invalid data format");
+            }
+
+            // Validate and prepare data
+            schoolsData = data.map((school, index) => ({
+              id: index + 1,
+              name: school.name || "Unnamed School",
+              location: school.location || "Location not specified",
+              description: truncateDescription(school.description),
+              image: school.image || FALLBACK_IMAGE,
+              tours: {
+                virtual: school.tours?.virtual || "",
+                street: school.tours?.street || "",
+              },
+              contact: school.contact || "",
+              disclosure: school.disclosure || "",
+              // Create searchable string
+              _search: `${school.name || ""} ${
+                school.location || ""
+              } ${school.description || ""} ${
+                school.facilities || ""
+              }`.toLowerCase(),
+            }));
+
+            filteredData = [...schoolsData];
+            renderCards();
+          } catch (error) {
+            console.error("Error loading data:", error);
+            showErrorState(error.message);
+          }
+        }
+
+        function createLoadingState() {
+          return `
+            <div class="loading-state">
+              <i class="fas fa-spinner"></i>
+              <p>Loading school data...</p>
+            </div>
+          `;
         }
 
         function renderCards() {
@@ -1059,6 +936,7 @@
 
         function createCardHTML(school, index) {
           const {
+            id,
             name,
             location,
             description,
@@ -1068,32 +946,21 @@
             disclosure,
           } = school;
 
-          const safeImage = image || FALLBACK_IMAGE;
-          const virtualURL = tours?.virtual || "";
-          const streetURL = tours?.street || "";
-          const disclosureURL = disclosure || "";
-          const contactURL = contact || "";
-
-          const escapeHTML = (str) => {
-            if (!str) return "";
-            const div = document.createElement("div");
-            div.textContent = str;
-            return div.innerHTML;
-          };
-
-          const safeURL = (url) => {
-            if (!url || !url.startsWith("http")) return "";
-            return url;
-          };
+          const safeImage = safeURL(image) || FALLBACK_IMAGE;
+          const virtualURL = safeURL(tours.virtual);
+          const streetURL = safeURL(tours.street);
+          const disclosureURL = safeURL(disclosure);
+          const contactURL = safeURL(contact);
 
           const createTourButton = (
             type,
             label,
             icon,
             url,
-            tooltip = ""
+            tooltip = "",
+            available = true
           ) => {
-            const hasUrl = safeURL(url) && url !== "#";
+            const hasUrl = url && url !== "#";
             const classes = `tour-btn ${type} ${!hasUrl ? "disabled" : ""}`;
             const ariaLabel = `${label} for ${escapeHTML(name)}`;
             const title = tooltip || label;
@@ -1119,7 +986,7 @@
                  title="${title}"
                  aria-label="${ariaLabel}"
                  data-action="${type}"
-                 data-school-id="${school.id}">
+                 data-school-id="${id}">
                 <i class="${icon}" aria-hidden="true"></i>
                 <span>${label}</span>
               </a>
@@ -1128,7 +995,7 @@
 
           return `
             <article class="school-card" 
-                     data-id="${school.id}"
+                     data-id="${id}"
                      data-index="${index}" 
                      aria-label="${escapeHTML(name)} - ${escapeHTML(location)}">
               
@@ -1214,6 +1081,7 @@
             <div class="error-state">
               <i class="fas fa-exclamation-triangle"></i>
               <p>Unable to load school data</p>
+              ${message ? `<p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray-500)">${escapeHTML(message)}</p>` : ''}
               <button onclick="window.location.reload()" 
                       style="margin-top: 1rem; padding: 0.6rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-family: inherit; font-weight: 500;">
                 Try Again
@@ -1254,6 +1122,16 @@
           window.history.replaceState({}, "", url);
         }
 
+        // Load search from URL on page load
+        function loadSearchFromURL() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const searchQuery = urlParams.get("search");
+          if (searchQuery) {
+            searchInput.value = searchQuery;
+            searchInput.dispatchEvent(new Event("input"));
+          }
+        }
+
         // Reset search function
         window.resetSearch = () => {
           searchInput.value = "";
@@ -1267,7 +1145,7 @@
         document.addEventListener("keydown", (e) => {
           // Clear search on Escape
           if (e.key === "Escape" && searchInput === document.activeElement) {
-            window.resetSearch();
+            resetSearch();
           }
           
           // Focus search on Ctrl+K / Cmd+K
@@ -1290,16 +1168,17 @@
         });
 
         // Load search from URL
-        function loadSearchFromURL() {
-          const urlParams = new URLSearchParams(window.location.search);
-          const searchQuery = urlParams.get("search");
-          if (searchQuery) {
-            searchInput.value = searchQuery;
-            searchInput.dispatchEvent(new Event("input"));
-          }
-        }
-
         loadSearchFromURL();
+
+        // Remove loading state if no data after timeout
+        setTimeout(() => {
+          if (
+            cardsGrid.querySelector(".loading-state") &&
+            !schoolsData.length
+          ) {
+            showErrorState("Request timed out. Please check your connection.");
+          }
+        }, ERROR_TIMEOUT);
       });
     </script>
   </body>

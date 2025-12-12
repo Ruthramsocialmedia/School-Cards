@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBSE Schools Virtual Tours | Immersive Campus Experiences</title>
+
+    <!-- Satoshi Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* =========================
+           CSS Reset & Variables
+        ========================= */
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #dbeafe;
+        --secondary: #7c3aed;
+        --accent: #06b6d4;
+        --dark: #0f172a;
+        --dark-2: #1e293b;
+        --light: #f8fafc;
+        --light-2: #f1f5f9;
+        --gray-100: #f1f5f9;
+        --gray-200: #e2e8f0;
+        --gray-300: #cbd5e1;
+        --gray-400: #94a3b8;
+        --gray-600: #475569;
+        --gray-700: #334155;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --error: #ef4444;
+        --info: #3b82f6;
+        --disclosure: #8b5cf6;
+        --shadow-color: 0 4% 16%;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        --radius-xl: 20px;
+        --radius-2xl: 24px;
+
+        --shadow-xs: 0 1px 2px hsl(var(--shadow-color) / 0.05);
+        --shadow-sm: 0 2px 4px hsl(var(--shadow-color) / 0.08);
+        --shadow-md: 0 4px 12px hsl(var(--shadow-color) / 0.1);
+        --shadow-lg: 0 8px 24px hsl(var(--shadow-color) / 0.12);
+        --shadow-xl: 0 16px 40px hsl(var(--shadow-color) / 0.15);
+
+        --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          system-ui, sans-serif;
+        background: #f0f9ff;
+        color: var(--dark);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(37, 99, 235, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(124, 58, 237, 0.05) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(6, 182, 212, 0.06) 0%,
+            transparent 50%
+          );
+        z-index: -1;
+      }
+
+      /* =========================
+           Typography
+        ========================= */
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(
+          135deg,
+          var(--dark) 0%,
+          var(--primary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        color: var(--dark);
+      }
+
+      .lead {
+        font-size: 1.25rem;
+        color: var(--gray-600);
+        font-weight: 500;
+        line-height: 1.6;
+        max-width: 75%;
+        margin: 0 auto;
+      }
+
+      /* =========================
+           Layout
+        ========================= */
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 clamp(1.5rem, 8vw, 200px);
+      }
+
+      .page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* =========================
+           Header & Hero
+        ========================= */
+      .header {
+        padding: 3rem 0 4rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1200px;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 0%,
+          rgba(37, 99, 235, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      /* =========================
+           Search
+        ========================= */
+      .search-container {
+        max-width: 720px;
+        margin: 3rem auto 2rem;
+        position: relative;
+      }
+
+      .search-box {
+        position: relative;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: var(--radius-xl);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-md), 0 8px 32px rgba(31, 38, 135, 0.07);
+        transition: all var(--transition-base);
+      }
+
+      .search-box:focus-within {
+        box-shadow: var(--shadow-xl), 0 0 0 3px rgba(37, 99, 235, 0.1);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 0.5rem 0 0.5rem 3rem;
+        border: none;
+        background: transparent;
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: var(--dark);
+        outline: none;
+        font-family: inherit;
+      }
+
+      .search-input::placeholder {
+        color: var(--gray-400);
+        font-weight: 400;
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gray-400);
+        font-size: 1.25rem;
+      }
+
+      .search-hint {
+        text-align: center;
+        color: var(--gray-500);
+        font-size: 0.875rem;
+        margin-top: 0.75rem;
+        opacity: 0;
+        transition: opacity var(--transition-base);
+      }
+
+      .search-box:focus-within + .search-hint {
+        opacity: 1;
+      }
+
+      /* =========================
+           Cards Grid
+        ========================= */
+      .main-content {
+        flex: 1;
+        padding-bottom: 4rem;
+      }
+
+      .grid-header {
+        margin-bottom: 2rem;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(385px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      /* =========================
+           Card Design
+        ========================= */
+      .school-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg), 0 8px 32px rgba(31, 38, 135, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: all var(--transition-base);
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      .school-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-light);
+      }
+
+      .card-image {
+        height: 240px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .school-card:hover .card-image img {
+        transform: scale(1.05);
+      }
+
+      .card-content {
+        padding: 1.75rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .school-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+
+      .school-location {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--gray-600);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        padding: 0.25rem 0;
+      }
+
+      .school-location i {
+        color: var(--primary);
+        font-size: 0.9rem;
+      }
+
+      .school-description {
+        color: var(--gray-600);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex: 1;
+      }
+
+      /* =========================
+           Tours Section
+        ========================= */
+      .tours-section {
+        margin-top: auto;
+        border-top: 1px solid var(--gray-100);
+        padding-top: 1.5rem;
+      }
+
+      .tours-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--gray-600);
+        margin-bottom: 1rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .tours-title::before {
+        content: "";
+        width: 4px;
+        height: 16px;
+        background: var(--primary);
+        border-radius: 2px;
+        display: block;
+      }
+
+      .tours-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+      }
+
+      .tour-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0.5rem;
+        border-radius: var(--radius-lg);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+        transition: all var(--transition-base);
+        border: 1px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tour-btn i {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .tour-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity var(--transition-base);
+      }
+
+      .tour-btn:hover::before {
+        opacity: 1;
+      }
+
+      .tour-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .tour-btn.virtual {
+        background: linear-gradient(135deg, #fef3f2 0%, #fee2e2 100%);
+        color: #dc2626;
+        border-color: rgba(220, 38, 38, 0.2);
+      }
+
+      .tour-btn.virtual:hover {
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        box-shadow: 0 8px 16px rgba(220, 38, 38, 0.15);
+      }
+
+      .tour-btn.street {
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        color: var(--primary);
+        border-color: rgba(37, 99, 235, 0.2);
+      }
+
+      .tour-btn.street:hover {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        box-shadow: 0 8px 16px rgba(37, 99, 235, 0.15);
+      }
+
+      .tour-btn.disclosure {
+        background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+        color: var(--disclosure);
+        border-color: rgba(139, 92, 246, 0.2);
+      }
+
+      .tour-btn.disclosure:hover {
+        background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+        box-shadow: 0 8px 16px rgba(139, 92, 246, 0.15);
+      }
+
+      .tour-btn.contact {
+        background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+        color: var(--success);
+        border-color: rgba(16, 185, 129, 0.2);
+      }
+
+      .tour-btn.contact:hover {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        box-shadow: 0 8px 16px rgba(16, 185, 129, 0.15);
+      }
+
+      .tour-btn.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+        filter: grayscale(0.8);
+        background: linear-gradient(
+          135deg,
+          #f1f5f9 0%,
+          #e2e8f0 100%
+        ) !important;
+        color: var(--gray-500) !important;
+        border-color: var(--gray-300) !important;
+      }
+
+      .tour-btn.disabled:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* =========================
+           States
+        ========================= */
+      .loading-state,
+      .empty-state,
+      .error-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 4rem 2rem;
+        border-radius: var(--radius-xl);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--gray-600);
+      }
+
+      .loading-state i {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        display: block;
+        animation: spin 1s linear infinite;
+      }
+
+      .empty-state i,
+      .error-state i {
+        font-size: 3.5rem;
+        color: var(--gray-300);
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      .error-state i {
+        color: var(--error);
+      }
+
+      /* =========================
+           Footer
+        ========================= */
+      .footer {
+        margin-top: auto;
+        padding: 3rem 0;
+        text-align: center;
+        border-top: 1px solid var(--gray-200);
+        color: var(--gray-600);
+        font-size: 0.95rem;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .footer-link {
+        color: var(--gray-600);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+      }
+
+      .footer-link:hover {
+        color: var(--primary);
+      }
+
+      /* =========================
+           Animations
+        ========================= */
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* =========================
+           Responsive Design
+        ========================= */
+      @media (max-width: 1200px) {
+        .cards-grid {
+          grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .tours-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .lead {
+          font-size: 1.125rem;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .search-container {
+          margin: 2rem auto;
+        }
+
+        .tours-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .search-input {
+          font-size: 1rem;
+        }
+
+        .tours-grid {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+
+        .tour-btn {
+          flex-direction: row;
+          justify-content: flex-start;
+          padding: 0.75rem 1rem;
+          gap: 0.75rem;
+        }
+
+        .tour-btn i {
+          margin-bottom: 0;
+          font-size: 1rem;
+        }
+      }
+
+      /* =========================
+           Accessibility
+        ========================= */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* =========================
+           Scrollbar
+        ========================= */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--gray-100);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--gray-400);
+      }
+
+      ::selection {
+        background: rgba(37, 99, 235, 0.2);
+        color: var(--dark);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <!-- Header -->
+      <header class="header">
+        <div class="container">
+          <h1>Discover Premier CBSE Schools</h1>
+          <p class="lead">
+            Experience campuses through immersive 360° tours, interactive 3D
+            walkthroughs, and virtual explorations. Find your perfect
+            educational environment.
+          </p>
+
+          <!-- Search -->
+          <div class="search-container">
+            <div class="search-box">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                id="searchInput"
+                placeholder="Search schools by name, location, or features..."
+                aria-label="Search schools"
+              />
+            </div>
+            <div class="search-hint">
+              <span class="hint-text"
+                >Try searching for school names, locations, or facilities</span
+              >
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container">
+          <!-- Cards Grid -->
+          <div class="cards-grid" id="cardsGrid">
+            <div class="loading-state">
+              <i class="fas fa-spinner"></i>
+              <p>Loading school data...</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <p>© 2024 CBSE Schools Virtual Tours. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="#" class="footer-link">Privacy Policy</a>
+              <a href="#" class="footer-link">Terms of Service</a>
+              <a href="#" class="footer-link">Contact</a>
+              <a href="#" class="footer-link">About</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Elements
+        const cardsGrid = document.getElementById("cardsGrid");
+        const searchInput = document.getElementById("searchInput");
+
+        // Data
+        let schoolsData = [];
+        let filteredData = [];
+        let searchTimeout = null;
+        let firstRender = true;
+
+        // Utility functions
+        const escapeHTML = (str) => {
+          if (!str) return "";
+          const div = document.createElement("div");
+          div.textContent = str;
+          return div.innerHTML;
+        };
+
+        const safeURL = (url) => {
+          if (!url || !url.startsWith("http")) return "";
+          return url;
+        };
+
+        // Load data from data.json
+        loadData();
+
+        async function loadData() {
+          try {
+            const response = await fetch("data.json");
+            if (!response.ok) throw new Error("Failed to load data");
+
+            const data = await response.json();
+            if (!Array.isArray(data)) {
+              throw new Error("Invalid data format");
+            }
+
+            // Pre-compute search index
+            schoolsData = data.map((school) => ({
+              ...school,
+              _search: `${school.name || ""} ${school.location || ""} ${
+                school.description || ""
+              } ${school.facilities || ""}`.toLowerCase(),
+            }));
+
+            filteredData = [...schoolsData];
+            renderCards();
+          } catch (error) {
+            console.error("Error loading data:", error);
+            showErrorState();
+          }
+        }
+
+        function renderCards() {
+          if (!filteredData.length) {
+            cardsGrid.innerHTML = `
+              <div class="empty-state">
+                <i class="fas fa-search"></i>
+                <p>No schools match your search</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray-500)">
+                  Try adjusting your search terms
+                </p>
+              </div>
+            `;
+            return;
+          }
+
+          const cardsHTML = filteredData
+            .map((school, index) => createCardHTML(school, index))
+            .join("");
+          cardsGrid.innerHTML = cardsHTML;
+
+          // Add staggered animation only on first render
+          if (firstRender) {
+            const cards = cardsGrid.querySelectorAll(".school-card");
+            cards.forEach((card, i) => {
+              card.style.animationDelay = `${i * 0.1}s`;
+            });
+            firstRender = false;
+          }
+        }
+
+        function createCardHTML(school, index) {
+          const {
+            name = "Unnamed School",
+            location = "Location not specified",
+            description = "No description available.",
+            image = "",
+            tours = {},
+            contact = "",
+            disclosure = "",
+          } = school;
+
+          const virtualURL = safeURL(tours.virtual);
+          const streetURL = safeURL(tours.street);
+          const disclosureURL = safeURL(disclosure);
+          const contactURL = safeURL(contact);
+
+          // Use fallback image if none provided
+          const safeImage =
+            safeURL(image) ||
+            `https://images.unsplash.com/photo-1596495578065-8a3e57c69cbd?auto=format&fit=crop&w=800&q=80`;
+
+          // Create tour buttons with proper accessibility
+          const createTourButton = (
+            type,
+            label,
+            icon,
+            url,
+            tooltip = "",
+            isFirst = false
+          ) => {
+            const hasUrl = url && url !== "#";
+            const classes = `tour-btn ${type} ${!hasUrl ? "disabled" : ""}`;
+            const ariaLabel = `${label} for ${escapeHTML(name)}`;
+            const title = tooltip || label;
+
+            if (!hasUrl) {
+              return `
+                <span class="${classes}" 
+                      title="${title}"
+                      aria-label="${ariaLabel} (not available)"
+                      role="button"
+                      tabindex="0">
+                  <i class="${icon}" aria-hidden="true"></i>
+                  <span>${label}</span>
+                  ${
+                    type === "virtual"
+                      ? '<span class="sr-only">360° inside campus tour</span>'
+                      : ""
+                  }
+                  ${
+                    type === "street"
+                      ? '<span class="sr-only">Google Street View campus exterior</span>'
+                      : ""
+                  }
+                </span>
+              `;
+            }
+
+            return `
+              <a href="${url}" 
+                 class="${classes}" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 title="${title}"
+                 aria-label="${ariaLabel}"
+                 ${isFirst ? 'id="first-tour-' + index + '"' : ""}>
+                <i class="${icon}" aria-hidden="true"></i>
+                <span>${label}</span>
+                ${
+                  type === "virtual"
+                    ? '<span class="sr-only">360° inside campus tour</span>'
+                    : ""
+                }
+                ${
+                  type === "street"
+                    ? '<span class="sr-only">Google Street View campus exterior</span>'
+                    : ""
+                }
+              </a>
+            `;
+          };
+
+          return `
+            <article class="school-card" data-index="${index}" 
+                     aria-label="${escapeHTML(name)} - ${escapeHTML(location)}">
+              
+              <div class="card-image">
+                <img 
+                  src="${safeImage}" 
+                  alt="${escapeHTML(name)} campus view" 
+                  loading="lazy"
+                  onerror="this.src='https://images.unsplash.com/photo-1596495578065-8a3e57c69cbd?auto=format&fit=crop&w=800&q=80'"
+                >
+              </div>
+              
+              <div class="card-content">
+                <h3 class="school-name">${escapeHTML(name)}</h3>
+                
+                <div class="school-location">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                  <span>${escapeHTML(location)}</span>
+                </div>
+                
+                <p class="school-description">${escapeHTML(description)}</p>
+                
+                <div class="tours-section">
+                  <div class="tours-title">Available Links</div>
+                  <div class="tours-grid">
+                    ${createTourButton(
+                      "disclosure",
+                      "Mandatory Disclosure",
+                      "fas fa-file-alt",
+                      disclosureURL,
+                      "View mandatory public disclosures"
+                    )}
+                    
+                    ${createTourButton(
+                      "contact",
+                      "Contact Us",
+                      "fas fa-phone-alt",
+                      contactURL,
+                      "Contact the school"
+                    )}
+                    
+                    ${createTourButton(
+                      "virtual",
+                      "Virtual Tour",
+                      "fas fa-vr-cardboard",
+                      virtualURL,
+                      "Explore 360° virtual campus tour",
+                      true
+                    )}
+                    
+                    ${createTourButton(
+                      "street",
+                      "Street View",
+                      "fas fa-street-view",
+                      streetURL,
+                      "View campus on Google Street View"
+                    )}
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        }
+
+        function showErrorState() {
+          cardsGrid.innerHTML = `
+            <div class="error-state">
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>Unable to load school data</p>
+              <button onclick="location.reload()" 
+                      style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer;">
+                Try Again
+              </button>
+            </div>
+          `;
+        }
+
+        // Search functionality with performance optimization
+        searchInput.addEventListener("input", (e) => {
+          clearTimeout(searchTimeout);
+
+          searchTimeout = setTimeout(() => {
+            const query = e.target.value.toLowerCase().trim();
+
+            if (!query) {
+              filteredData = [...schoolsData];
+            } else {
+              filteredData = schoolsData.filter((school) =>
+                school._search.includes(query)
+              );
+            }
+
+            renderCards();
+          }, 300);
+        });
+
+        // Keyboard navigation for cards
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && searchInput === document.activeElement) {
+            searchInput.value = "";
+            filteredData = [...schoolsData];
+            renderCards();
+          }
+        });
+
+        // Focus search on Ctrl+K / Cmd+K
+        document.addEventListener("keydown", (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+            e.preventDefault();
+            searchInput.focus();
+            searchInput.select();
+          }
+        });
+
+        // Remove loading state if no data after timeout
+        setTimeout(() => {
+          if (
+            cardsGrid.querySelector(".loading-state") &&
+            !schoolsData.length
+          ) {
+            showErrorState();
+          }
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>

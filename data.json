@@ -1,0 +1,182 @@
+[
+  {
+    "name": "ST. JOHN'S ENGLISH SCHOOL",
+    "location": "Besant Nagar, Chennai, Tamil Nadu",
+    "description": "Senior Secondary School with strong academic environment and co-curricular focus.",
+    "image": "https://media.istockphoto.com/id/94733145/photo/modern-brick-high-school.jpg?s=612x612&w=0&k=20&c=uvy_8EVFCZt74Ru8dxOnCOLW1Ts24qLnvesQNd7jN7E=",
+    "tours": {
+      "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+      "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+    },
+    "disclosure": "https://sjbn.edu.in/mandatory-disclosure/",
+    "contact": "https://sjbn.edu.in/contact/"
+  },
+  {
+    "name": "NATIONAL PUBLIC SCHOOL",
+    "location": "Gopalapuram, Chennai, Tamil Nadu",
+    "description": "Reputed Senior Secondary institution offering holistic academic development.",
+    "image": "https://images.unsplash.com/photo-1562774053-701939374585?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+      "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+    },
+    "disclosure": "https://www.npschennai.com/MANDATORY_PUBLIC_DISCLOSURE.pdf",
+    "contact": "https://www.npschennai.com/contact-us.html"
+  },
+  {
+    "name": "JAWAHAR VIDYALAYA SR SEC SCHOOL",
+    "location": "Ashok Nagar, Chennai, Tamil Nadu",
+    "description": "CBSE Senior Secondary school known for discipline and academic excellence.",
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.iviewd.com/woodstock/",
+      "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+    },
+    "disclosure": "https://jawaharvidyalaya.com/mandatory/",
+    "contact": "https://jawaharvidyalaya.com/contact-us/"
+  },
+  {
+    "name": "THE HINDU SENIOR SEC SCHOOL",
+    "location": "Triplicane, Chennai, Tamil Nadu",
+    "description": "Historic Senior Secondary school with strong academic and cultural legacy.",
+    "image": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+      "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+    },
+    "disclosure": "https://hinduseniortriplicane.com/mandatory-disclosure-2022/",
+    "contact": "https://hinduseniortriplicane.com/contact-us/"
+  },
+  {
+    "name": "SRI SANKARA SR SEC SCHOOL",
+    "location": "Adyar, Chennai, Tamil Nadu",
+    "description": "Popular CBSE school offering quality education rooted in tradition.",
+    "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+      "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+    },
+    "disclosure": "https://sssa.srisankaraschools.org/mandatory-disclosure/",
+    "contact": "https://sssa.srisankaraschools.org/contact-us/"
+  },
+  {
+    "name": "GURU SHREE SANTHIVIJAY JAIN VIDYALAY",
+    "location": "Vepery, Chennai, Tamil Nadu",
+    "description": "CBSE Senior Secondary school focused on value-based education for Jain community and beyond.",
+    "image": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.iviewd.com/woodstock/",
+      "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+    },
+    "disclosure": "https://gssjainvidyalaya.com/contact-us/",
+    "contact": "https://gssjainvidyalaya.com/contact-us/"
+  },
+  {
+    "name": "ST. JOHN'S SENIOR SEC SCHOOL",
+    "location": "Mandaveli, Chennai, Tamil Nadu",
+    "description": "Renowned Senior Secondary school with balanced academic and extracurricular programs.",
+    "image": "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+      "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+    },
+    "disclosure": "https://stjohnscbse.com/public-disclosure-documents/",
+    "contact": "https://stjohnscbse.com/contact-us/"
+  },
+  {
+    "name": "LA CHATELAINE JUNIOR COLLEGE",
+    "location": "Valasaravakkam, Chennai, Tamil Nadu",
+    "description": "Prestigious junior college offering CBSE curriculum with modern learning infrastructure.",
+    "image": "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.iviewd.com/woodstock/",
+      "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+    },
+    "disclosure": "https://www.lachatelaine.info/Docs/Appendix%20IX.pdf",
+    "contact": "https://www.lachatelaine.info/OurSchool.html"
+  },
+  {
+    "name": "SHRINE VAILANKANNI SR SEC SCHOOL",
+    "location": "T Nagar, Chennai, Tamil Nadu",
+    "description": "A well-known Senior Secondary school with strong academic track record.",
+    "image": "https://lh3.googleusercontent.com/p/AF1QipONdF87F9-snEqc3cwQyOqXBYw0OjWfUel2jqGb=s680-w680-h510",
+    "tours": {
+      "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+      "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+    },
+    "disclosure": "https://vailankanni.org/about/disclosures/",
+    "contact": "https://vailankanni.org/about/our-legacy/"
+  },
+  {
+    "name": "BALA VIDYA MANDIR SR SEC SCHOOL",
+    "location": "Adyar, Chennai, Tamil Nadu",
+    "description": "Esteemed CBSE school with excellent academic reputation and cultural activities.",
+    "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+      "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+    },
+    "disclosure": "https://www.balavidyamandir.com/public_disclosure",
+    "contact": "https://www.balavidyamandir.com/our_school"
+  },
+  {
+    "name": "SHERWOOD HALL SR SEC SCHOOL",
+    "location": "Chetpet, Chennai, Tamil Nadu",
+    "description": "Top-rated Senior Secondary school with modern facilities and holistic learning.",
+    "image": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.iviewd.com/woodstock/",
+      "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+    },
+    "disclosure": "https://sherwoodhallschool.com/mandatory-public-disclosure/",
+    "contact": "https://sherwoodhallschool.com/contact-us/"
+  },
+  {
+    "name": "P S B B SENIOR SECONDARY SCHOOL (Nungambakkam)",
+    "location": "Nungambakkam, Chennai, Tamil Nadu",
+    "description": "Iconic CBSE school known for excellence in academics and extracurriculars.",
+    "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+      "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+    },
+    "disclosure": "https://www.psbbschools.ac.in/mandatory-disclosure",
+    "contact": "https://www.psbbschools.ac.in/contact"
+  },
+  {
+    "name": "VIDYA MANDIR SR SEC SCHOOL",
+    "location": "Mylapore, Chennai, Tamil Nadu",
+    "description": "Highly reputed Senior Secondary school with strong academic legacy.",
+    "image": "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+      "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+    },
+    "disclosure": "https://www.vidya-mandir.edu.in/wp-content/uploads/2024/07/MANDATORY-PUBLIC-DISCLOSURE-2024.pdf",
+    "contact": "https://www.vidya-mandir.edu.in/contact-us/"
+  },
+  {
+    "name": "CHINMAYA VIDYALAYA",
+    "location": "Kilpauk, Chennai, Tamil Nadu",
+    "description": "CBSE Senior Secondary school inspired by Chinmaya Mission values.",
+    "image": "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.iviewd.com/woodstock/",
+      "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+    },
+    "disclosure": "https://cvschooltrichy.org/school-details.php",
+    "contact": "https://cvschooltrichy.org/contact.php"
+  },
+  {
+    "name": "KOLAPERUMAL CHETTY VAISHNAV S S SCHOOL",
+    "location": "Arumbakkam, Chennai, Tamil Nadu",
+    "description": "CBSE school offering academic excellence with Vaishnav cultural values.",
+    "image": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&auto=format&fit=crop",
+    "tours": {
+      "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+      "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+    },
+    "disclosure": "https://kpcvs.co.in/StatutoryCompliances.html",
+    "contact": "https://kpcvs.co.in/Contactus.html"
+  }
+]

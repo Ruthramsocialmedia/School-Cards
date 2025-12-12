@@ -151,7 +151,7 @@
       .container {
         max-width: 100%;
         margin: 0 auto;
-        padding: 0 clamp(1.5rem, 8vw, 200px);
+        padding: 0 clamp(1.5rem, 6vw, 160px);
       }
 
       .page-wrapper {
@@ -253,7 +253,7 @@
       }
 
       /* =========================
-           Cards Grid
+           Cards Grid - FIXED WIDTH
         ========================= */
       .main-content {
         flex: 1;
@@ -266,7 +266,7 @@
 
       .cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(385px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
       }
@@ -355,7 +355,7 @@
       }
 
       /* =========================
-           Tours Section
+           Tours Section - BULLETPROOF FIX
         ========================= */
       .tours-section {
         margin-top: auto;
@@ -384,31 +384,65 @@
         display: block;
       }
 
+      /* 🔥 CRITICAL FIX: Lock 4 columns on desktop, auto on smaller */
       .tours-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
         gap: 0.75rem;
       }
 
+      /* Desktop: Always 4 columns */
+      @media (min-width: 1025px) {
+        .tours-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* Tablet: Auto adjust */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .tours-grid {
+          grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        }
+      }
+
+      /* Mobile: Stack or 2 columns */
+      @media (max-width: 768px) {
+        .tours-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Extra small: Single column */
+      @media (max-width: 480px) {
+        .tours-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* =========================
+           Tour Buttons - COMPACT DESIGN
+        ========================= */
       .tour-btn {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 1rem 0.5rem;
+        padding: 0.75rem 0.5rem;
         border-radius: var(--radius-lg);
         text-decoration: none;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 600;
         text-align: center;
         transition: all var(--transition-base);
         border: 1px solid transparent;
         position: relative;
         overflow: hidden;
+        min-height: 88px;
+        word-break: break-word;
+        line-height: 1.2;
       }
 
       .tour-btn i {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         margin-bottom: 0.5rem;
       }
 
@@ -437,6 +471,7 @@
         box-shadow: var(--shadow-md);
       }
 
+      /* Button colors */
       .tour-btn.virtual {
         background: linear-gradient(135deg, #fef3f2 0%, #fee2e2 100%);
         color: #dc2626;
@@ -486,11 +521,7 @@
         cursor: not-allowed;
         pointer-events: none;
         filter: grayscale(0.8);
-        background: linear-gradient(
-          135deg,
-          #f1f5f9 0%,
-          #e2e8f0 100%
-        ) !important;
+        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
         color: var(--gray-500) !important;
         border-color: var(--gray-300) !important;
       }
@@ -498,6 +529,29 @@
       .tour-btn.disabled:hover {
         transform: none;
         box-shadow: none;
+      }
+
+      /* =========================
+           Mobile Optimizations
+        ========================= */
+      @media (max-width: 480px) {
+        .tour-btn {
+          flex-direction: row;
+          justify-content: flex-start;
+          padding: 0.75rem 1rem;
+          gap: 0.75rem;
+          min-height: 64px;
+          text-align: left;
+        }
+
+        .tour-btn i {
+          margin-bottom: 0;
+          font-size: 1rem;
+        }
+
+        .tours-grid {
+          gap: 0.5rem;
+        }
       }
 
       /* =========================
@@ -587,7 +641,6 @@
         from {
           transform: rotate(0deg);
         }
-
         to {
           transform: rotate(360deg);
         }
@@ -602,12 +655,6 @@
         }
       }
 
-      @media (max-width: 1024px) {
-        .tours-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
       @media (max-width: 768px) {
         .container {
           padding: 0 1.5rem;
@@ -619,6 +666,7 @@
 
         .lead {
           font-size: 1.125rem;
+          max-width: 90%;
         }
 
         .cards-grid {
@@ -628,10 +676,6 @@
 
         .search-container {
           margin: 2rem auto;
-        }
-
-        .tours-grid {
-          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -648,21 +692,8 @@
           font-size: 1rem;
         }
 
-        .tours-grid {
-          grid-template-columns: 1fr;
-          gap: 0.5rem;
-        }
-
-        .tour-btn {
-          flex-direction: row;
-          justify-content: flex-start;
-          padding: 0.75rem 1rem;
-          gap: 0.75rem;
-        }
-
-        .tour-btn i {
-          margin-bottom: 0;
-          font-size: 1rem;
+        .card-content {
+          padding: 1.5rem;
         }
       }
 
@@ -783,119 +814,286 @@
     </div>
 
     <script>
+      // School data from your JSON
+      const schoolsData = [
+        {
+          "name": "ST. JOHN'S ENGLISH SCHOOL",
+          "location": "Besant Nagar, Chennai, Tamil Nadu",
+          "description": "Senior Secondary School with strong academic environment and co-curricular focus.",
+          "image": "https://media.istockphoto.com/id/94733145/photo/modern-brick-high-school.jpg?s=612x612&w=0&k=20&c=uvy_8EVFCZt74Ru8dxOnCOLW1Ts24qLnvesQNd7jN7E=",
+          "tours": {
+            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+          },
+          "disclosure": "https://sjbn.edu.in/mandatory-disclosure/",
+          "contact": "https://sjbn.edu.in/contact/"
+        },
+        {
+          "name": "NATIONAL PUBLIC SCHOOL",
+          "location": "Gopalapuram, Chennai, Tamil Nadu",
+          "description": "Reputed Senior Secondary institution offering holistic academic development.",
+          "image": "https://images.unsplash.com/photo-1562774053-701939374585?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+          },
+          "disclosure": "https://www.npschennai.com/MANDATORY_PUBLIC_DISCLOSURE.pdf",
+          "contact": "https://www.npschennai.com/contact-us.html"
+        },
+        {
+          "name": "JAWAHAR VIDYALAYA SR SEC SCHOOL",
+          "location": "Ashok Nagar, Chennai, Tamil Nadu",
+          "description": "CBSE Senior Secondary school known for discipline and academic excellence.",
+          "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.iviewd.com/woodstock/",
+            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+          },
+          "disclosure": "https://jawaharvidyalaya.com/mandatory/",
+          "contact": "https://jawaharvidyalaya.com/contact-us/"
+        },
+        {
+          "name": "THE HINDU SENIOR SEC SCHOOL",
+          "location": "Triplicane, Chennai, Tamil Nadu",
+          "description": "Historic Senior Secondary school with strong academic and cultural legacy.",
+          "image": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+          },
+          "disclosure": "https://hinduseniortriplicane.com/mandatory-disclosure-2022/",
+          "contact": "https://hinduseniortriplicane.com/contact-us/"
+        },
+        {
+          "name": "SRI SANKARA SR SEC SCHOOL",
+          "location": "Adyar, Chennai, Tamil Nadu",
+          "description": "Popular CBSE school offering quality education rooted in tradition.",
+          "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+          },
+          "disclosure": "https://sssa.srisankaraschools.org/mandatory-disclosure/",
+          "contact": "https://sssa.srisankaraschools.org/contact-us/"
+        },
+        {
+          "name": "GURU SHREE SANTHIVIJAY JAIN VIDYALAY",
+          "location": "Vepery, Chennai, Tamil Nadu",
+          "description": "CBSE Senior Secondary school focused on value-based education for Jain community and beyond.",
+          "image": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.iviewd.com/woodstock/",
+            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+          },
+          "disclosure": "https://gssjainvidyalaya.com/contact-us/",
+          "contact": "https://gssjainvidyalaya.com/contact-us/"
+        },
+        {
+          "name": "ST. JOHN'S SENIOR SEC SCHOOL",
+          "location": "Mandaveli, Chennai, Tamil Nadu",
+          "description": "Renowned Senior Secondary school with balanced academic and extracurricular programs.",
+          "image": "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+          },
+          "disclosure": "https://stjohnscbse.com/public-disclosure-documents/",
+          "contact": "https://stjohnscbse.com/contact-us/"
+        },
+        {
+          "name": "LA CHATELAINE JUNIOR COLLEGE",
+          "location": "Valasaravakkam, Chennai, Tamil Nadu",
+          "description": "Prestigious junior college offering CBSE curriculum with modern learning infrastructure.",
+          "image": "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.iviewd.com/woodstock/",
+            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+          },
+          "disclosure": "https://www.lachatelaine.info/Docs/Appendix%20IX.pdf",
+          "contact": "https://www.lachatelaine.info/OurSchool.html"
+        },
+        {
+          "name": "SHRINE VAILANKANNI SR SEC SCHOOL",
+          "location": "T Nagar, Chennai, Tamil Nadu",
+          "description": "A well-known Senior Secondary school with strong academic track record.",
+          "image": "https://lh3.googleusercontent.com/p/AF1QipONdF87F9-snEqc3cwQyOqXBYw0OjWfUel2jqGb=s680-w680-h510",
+          "tours": {
+            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+          },
+          "disclosure": "https://vailankanni.org/about/disclosures/",
+          "contact": "https://vailankanni.org/about/our-legacy/"
+        },
+        {
+          "name": "BALA VIDYA MANDIR SR SEC SCHOOL",
+          "location": "Adyar, Chennai, Tamil Nadu",
+          "description": "Esteemed CBSE school with excellent academic reputation and cultural activities.",
+          "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+          },
+          "disclosure": "https://www.balavidyamandir.com/public_disclosure",
+          "contact": "https://www.balavidyamandir.com/our_school"
+        },
+        {
+          "name": "SHERWOOD HALL SR SEC SCHOOL",
+          "location": "Chetpet, Chennai, Tamil Nadu",
+          "description": "Top-rated Senior Secondary school with modern facilities and holistic learning.",
+          "image": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.iviewd.com/woodstock/",
+            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+          },
+          "disclosure": "https://sherwoodhallschool.com/mandatory-public-disclosure/",
+          "contact": "https://sherwoodhallschool.com/contact-us/"
+        },
+        {
+          "name": "P S B B SENIOR SECONDARY SCHOOL (Nungambakkam)",
+          "location": "Nungambakkam, Chennai, Tamil Nadu",
+          "description": "Iconic CBSE school known for excellence in academics and extracurriculars.",
+          "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+          },
+          "disclosure": "https://www.psbbschools.ac.in/mandatory-disclosure",
+          "contact": "https://www.psbbschools.ac.in/contact"
+        },
+        {
+          "name": "VIDYA MANDIR SR SEC SCHOOL",
+          "location": "Mylapore, Chennai, Tamil Nadu",
+          "description": "Highly reputed Senior Secondary school with strong academic legacy.",
+          "image": "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.thewhiteschool.in/virtual-tour/",
+            "street": "https://maps.app.goo.gl/NT1fKW4QeahJYtgj9"
+          },
+          "disclosure": "https://www.vidya-mandir.edu.in/wp-content/uploads/2024/07/MANDATORY-PUBLIC-DISCLOSURE-2024.pdf",
+          "contact": "https://www.vidya-mandir.edu.in/contact-us/"
+        },
+        {
+          "name": "CHINMAYA VIDYALAYA",
+          "location": "Kilpauk, Chennai, Tamil Nadu",
+          "description": "CBSE Senior Secondary school inspired by Chinmaya Mission values.",
+          "image": "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.iviewd.com/woodstock/",
+            "street": "https://maps.app.goo.gl/M38uTANkYQKVCMCn7"
+          },
+          "disclosure": "https://cvschooltrichy.org/school-details.php",
+          "contact": "https://cvschooltrichy.org/contact.php"
+        },
+        {
+          "name": "KOLAPERUMAL CHETTY VAISHNAV S S SCHOOL",
+          "location": "Arumbakkam, Chennai, Tamil Nadu",
+          "description": "CBSE school offering academic excellence with Vaishnav cultural values.",
+          "image": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&auto=format&fit=crop",
+          "tours": {
+            "virtual": "https://www.periyaruniversity.ac.in/vtour/index.htm",
+            "street": "https://maps.app.goo.gl/EzUYDpyXNr5FWWT69"
+          },
+          "disclosure": "https://kpcvs.co.in/StatutoryCompliances.html",
+          "contact": "https://kpcvs.co.in/Contactus.html"
+        }
+      ];
+
       document.addEventListener("DOMContentLoaded", () => {
         // Elements
         const cardsGrid = document.getElementById("cardsGrid");
         const searchInput = document.getElementById("searchInput");
 
-        // Data
-        let schoolsData = [];
+        // State
         let filteredData = [];
         let searchTimeout = null;
         let firstRender = true;
 
-        // Utility functions
-        const escapeHTML = (str) => {
-          if (!str) return "";
-          const div = document.createElement("div");
-          div.textContent = str;
-          return div.innerHTML;
-        };
+        // Constants
+        const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1596495578065-8a3e57c69cbd?auto=format&fit=crop&w=800&q=80";
+        const DEBOUNCE_DELAY = 300;
 
-        const safeURL = (url) => {
-          if (!url || !url.startsWith("http")) return "";
-          return url;
-        };
+        // Initialize
+        initializeData();
+        renderCards();
 
-        // Load data from data.json
-        loadData();
-
-        async function loadData() {
-          try {
-            const response = await fetch("data.json");
-            if (!response.ok) throw new Error("Failed to load data");
-
-            const data = await response.json();
-            if (!Array.isArray(data)) {
-              throw new Error("Invalid data format");
-            }
-
-            // Pre-compute search index
-            schoolsData = data.map((school) => ({
-              ...school,
-              _search: `${school.name || ""} ${school.location || ""} ${
-                school.description || ""
-              } ${school.facilities || ""}`.toLowerCase(),
-            }));
-
-            filteredData = [...schoolsData];
-            renderCards();
-          } catch (error) {
-            console.error("Error loading data:", error);
-            showErrorState();
-          }
+        function initializeData() {
+          // Add search index to each school
+          schoolsData.forEach((school, index) => {
+            school.id = index + 1;
+            school._search = `${school.name || ""} ${
+              school.location || ""
+            } ${school.description || ""}`.toLowerCase();
+          });
+          
+          filteredData = [...schoolsData];
         }
 
         function renderCards() {
           if (!filteredData.length) {
-            cardsGrid.innerHTML = `
-              <div class="empty-state">
-                <i class="fas fa-search"></i>
-                <p>No schools match your search</p>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray-500)">
-                  Try adjusting your search terms
-                </p>
-              </div>
-            `;
+            cardsGrid.innerHTML = createEmptyState();
             return;
           }
 
           const cardsHTML = filteredData
             .map((school, index) => createCardHTML(school, index))
             .join("");
+          
           cardsGrid.innerHTML = cardsHTML;
 
-          // Add staggered animation only on first render
+          // Add staggered animation on first render
           if (firstRender) {
             const cards = cardsGrid.querySelectorAll(".school-card");
             cards.forEach((card, i) => {
-              card.style.animationDelay = `${i * 0.1}s`;
+              card.style.animationDelay = `${Math.min(i * 0.08, 0.5)}s`;
             });
             firstRender = false;
           }
+
+          // Add image error handlers
+          document.querySelectorAll(".card-image img").forEach(img => {
+            img.addEventListener("error", (e) => {
+              e.target.src = FALLBACK_IMAGE;
+            });
+          });
         }
 
         function createCardHTML(school, index) {
           const {
-            name = "Unnamed School",
-            location = "Location not specified",
-            description = "No description available.",
-            image = "",
-            tours = {},
-            contact = "",
-            disclosure = "",
+            name,
+            location,
+            description,
+            image,
+            tours,
+            contact,
+            disclosure,
           } = school;
 
-          const virtualURL = safeURL(tours.virtual);
-          const streetURL = safeURL(tours.street);
-          const disclosureURL = safeURL(disclosure);
-          const contactURL = safeURL(contact);
+          const safeImage = image || FALLBACK_IMAGE;
+          const virtualURL = tours?.virtual || "";
+          const streetURL = tours?.street || "";
+          const disclosureURL = disclosure || "";
+          const contactURL = contact || "";
 
-          // Use fallback image if none provided
-          const safeImage =
-            safeURL(image) ||
-            `https://images.unsplash.com/photo-1596495578065-8a3e57c69cbd?auto=format&fit=crop&w=800&q=80`;
+          const escapeHTML = (str) => {
+            if (!str) return "";
+            const div = document.createElement("div");
+            div.textContent = str;
+            return div.innerHTML;
+          };
 
-          // Create tour buttons with proper accessibility
+          const safeURL = (url) => {
+            if (!url || !url.startsWith("http")) return "";
+            return url;
+          };
+
           const createTourButton = (
             type,
             label,
             icon,
             url,
-            tooltip = "",
-            isFirst = false
+            tooltip = ""
           ) => {
-            const hasUrl = url && url !== "#";
+            const hasUrl = safeURL(url) && url !== "#";
             const classes = `tour-btn ${type} ${!hasUrl ? "disabled" : ""}`;
             const ariaLabel = `${label} for ${escapeHTML(name)}`;
             const title = tooltip || label;
@@ -903,22 +1101,12 @@
             if (!hasUrl) {
               return `
                 <span class="${classes}" 
-                      title="${title}"
+                      title="${title} (Coming Soon)"
                       aria-label="${ariaLabel} (not available)"
                       role="button"
                       tabindex="0">
                   <i class="${icon}" aria-hidden="true"></i>
                   <span>${label}</span>
-                  ${
-                    type === "virtual"
-                      ? '<span class="sr-only">360° inside campus tour</span>'
-                      : ""
-                  }
-                  ${
-                    type === "street"
-                      ? '<span class="sr-only">Google Street View campus exterior</span>'
-                      : ""
-                  }
                 </span>
               `;
             }
@@ -930,33 +1118,27 @@
                  rel="noopener noreferrer"
                  title="${title}"
                  aria-label="${ariaLabel}"
-                 ${isFirst ? 'id="first-tour-' + index + '"' : ""}>
+                 data-action="${type}"
+                 data-school-id="${school.id}">
                 <i class="${icon}" aria-hidden="true"></i>
                 <span>${label}</span>
-                ${
-                  type === "virtual"
-                    ? '<span class="sr-only">360° inside campus tour</span>'
-                    : ""
-                }
-                ${
-                  type === "street"
-                    ? '<span class="sr-only">Google Street View campus exterior</span>'
-                    : ""
-                }
               </a>
             `;
           };
 
           return `
-            <article class="school-card" data-index="${index}" 
+            <article class="school-card" 
+                     data-id="${school.id}"
+                     data-index="${index}" 
                      aria-label="${escapeHTML(name)} - ${escapeHTML(location)}">
               
               <div class="card-image">
                 <img 
                   src="${safeImage}" 
-                  alt="${escapeHTML(name)} campus view" 
+                  alt="Campus view of ${escapeHTML(name)}" 
                   loading="lazy"
-                  onerror="this.src='https://images.unsplash.com/photo-1596495578065-8a3e57c69cbd?auto=format&fit=crop&w=800&q=80'"
+                  width="400"
+                  height="240"
                 >
               </div>
               
@@ -975,7 +1157,7 @@
                   <div class="tours-grid">
                     ${createTourButton(
                       "disclosure",
-                      "Mandatory Disclosure",
+                      "Disclosure",
                       "fas fa-file-alt",
                       disclosureURL,
                       "View mandatory public disclosures"
@@ -983,7 +1165,7 @@
                     
                     ${createTourButton(
                       "contact",
-                      "Contact Us",
+                      "Contact",
                       "fas fa-phone-alt",
                       contactURL,
                       "Contact the school"
@@ -994,8 +1176,7 @@
                       "Virtual Tour",
                       "fas fa-vr-cardboard",
                       virtualURL,
-                      "Explore 360° virtual campus tour",
-                      true
+                      "Explore 360° virtual campus tour"
                     )}
                     
                     ${createTourButton(
@@ -1012,20 +1193,36 @@
           `;
         }
 
-        function showErrorState() {
+        function createEmptyState() {
+          return `
+            <div class="empty-state">
+              <i class="fas fa-search"></i>
+              <p>No schools match your search</p>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray-500)">
+                Try adjusting your search terms
+              </p>
+              <button onclick="resetSearch()" 
+                      style="margin-top: 1rem; padding: 0.6rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-family: inherit; font-weight: 500;">
+                Clear Search
+              </button>
+            </div>
+          `;
+        }
+
+        function showErrorState(message = "") {
           cardsGrid.innerHTML = `
             <div class="error-state">
               <i class="fas fa-exclamation-triangle"></i>
               <p>Unable to load school data</p>
-              <button onclick="location.reload()" 
-                      style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer;">
+              <button onclick="window.location.reload()" 
+                      style="margin-top: 1rem; padding: 0.6rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-family: inherit; font-weight: 500;">
                 Try Again
               </button>
             </div>
           `;
         }
 
-        // Search functionality with performance optimization
+        // Search functionality with debouncing
         searchInput.addEventListener("input", (e) => {
           clearTimeout(searchTimeout);
 
@@ -1041,20 +1238,39 @@
             }
 
             renderCards();
-          }, 300);
+            
+            // Update URL for shareable searches
+            updateURL(query);
+          }, DEBOUNCE_DELAY);
         });
 
-        // Keyboard navigation for cards
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && searchInput === document.activeElement) {
-            searchInput.value = "";
-            filteredData = [...schoolsData];
-            renderCards();
+        function updateURL(query) {
+          const url = new URL(window.location);
+          if (query) {
+            url.searchParams.set("search", query);
+          } else {
+            url.searchParams.delete("search");
           }
-        });
+          window.history.replaceState({}, "", url);
+        }
 
-        // Focus search on Ctrl+K / Cmd+K
+        // Reset search function
+        window.resetSearch = () => {
+          searchInput.value = "";
+          filteredData = [...schoolsData];
+          renderCards();
+          updateURL("");
+          searchInput.focus();
+        };
+
+        // Keyboard shortcuts
         document.addEventListener("keydown", (e) => {
+          // Clear search on Escape
+          if (e.key === "Escape" && searchInput === document.activeElement) {
+            window.resetSearch();
+          }
+          
+          // Focus search on Ctrl+K / Cmd+K
           if ((e.ctrlKey || e.metaKey) && e.key === "k") {
             e.preventDefault();
             searchInput.focus();
@@ -1062,15 +1278,28 @@
           }
         });
 
-        // Remove loading state if no data after timeout
-        setTimeout(() => {
-          if (
-            cardsGrid.querySelector(".loading-state") &&
-            !schoolsData.length
-          ) {
-            showErrorState();
+        // Analytics for button clicks
+        document.addEventListener("click", (e) => {
+          const tourBtn = e.target.closest(".tour-btn:not(.disabled)");
+          if (tourBtn && tourBtn.getAttribute("href")) {
+            const action = tourBtn.getAttribute("data-action");
+            const schoolId = tourBtn.getAttribute("data-school-id");
+            // Here you can send analytics data
+            console.log(`Tour clicked: ${action} for school ${schoolId}`);
           }
-        }, 5000);
+        });
+
+        // Load search from URL
+        function loadSearchFromURL() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const searchQuery = urlParams.get("search");
+          if (searchQuery) {
+            searchInput.value = searchQuery;
+            searchInput.dispatchEvent(new Event("input"));
+          }
+        }
+
+        loadSearchFromURL();
       });
     </script>
   </body>
